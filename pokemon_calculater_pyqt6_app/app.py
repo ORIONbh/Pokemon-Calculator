@@ -35,20 +35,30 @@ class MainWindow(QMainWindow):
         gui.setLayout(main_layout)
         self.setCentralWidget(gui)
 
-        self.label = QLabel("Results")
-        self.label.adjustSize()
-        right_pane.addWidget(self.label)
+        self.strength = QLabel("Strength Result")
+        self.strength.adjustSize()
+        right_pane.addWidget(self.strength)
+
+        self.weakness = QLabel("Weakness Result")
+        self.weakness.adjustSize()
+        right_pane.addWidget(self.weakness)
  
         button = QPushButton("Calculate")
-        button.clicked.connect(self.update)
+        button.clicked.connect(self.updatestrength)
+        button.clicked.connect(self.updateweakness)
         right_pane.addWidget(button)
 
- 
-    def update(self):
-        self.label.setText("Grass")
+    def updateweakness(self):
+        self.weakness.setText("Weak to Water ")
      
     def get(self):
-        print(self.label.text())
+        print(self.weakness.text())
+ 
+    def updatestrength(self):
+        self.strength.setText("Strong to Grass ")
+     
+    def get(self):
+        print(self.strength.text())
 
 app = QApplication(sys.argv)
 
